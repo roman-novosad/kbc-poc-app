@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 The script contains example of the paramiko usage for large file uploading.
 
@@ -5,34 +6,29 @@ It implements :func:`upload` with limited number of concurrent requests to serve
 paramiko implementation of the :method:`paramiko.SFTPClient.putfo` send read requests without
 limitations, that can cause problems if large file is being downloaded.
 """
-
-
-
-
-
-#!/usr/bin/env python3
 import ftplib
 import os
 import time
 import socket
-from kbc.env_handler import KBCEnvHandler
 
 
-class FtpUploadTracker:
-    sizeWritten = 0
-    totalSize = 0.0
-    lastShownPercent = 0
+class UploadTracker:
+    size_written = 0
+    total_size = 0.0
+    last_shown_percent = 0
 
-    def __init__(self, totalSize):
-        self.totalSize = totalSize
+    def __init__(self, total_size):
+        self.total_size = total_size
 
     def handle(self, block):
-        self.sizeWritten += 1024
-        percentComplete = round((self.sizeWritten / self.totalSize) * 100)
+        self.size_written += 1024
+        percent_complete = round((self.size_written / self.total_size) * 100)
 
-        if (self.lastShownPercent != percentComplete):
-            self.lastShownPercent = percentComplete
-            print(str(percentComplete) + "% complete remaining: " + str(self.totalSize - self.sizeWritten), flush=True)
+        if self.last_shown_percent != percent_complete:
+            self.last_shown_percent = percent_complete
+            print(str(percent_complete) + "% complete remaining: " + str(self.total_size - self.size_written))
+
+
 
 
 
@@ -46,35 +42,36 @@ if __name__ == "__main__":
     tries = 0
     done = False
 
-    print("Uploading " + str(filename) + " to " + str(Directory), flush=True)
+
+    print("Uploading " + str(filename) + " to " + str(Directory))
 
     while tries < 50 and not done:
         try:
             tries += 1
             with ftplib.FTP(Server) as ftp:
                 ftp.set_debuglevel(2)
-                print("login", flush=True)
+                print("login")
+
                 ftp.login(Username, Password)
-                # ftp.set_pasv(False)
                 ftp.cwd(Directory)
+
                 with open(filename, 'rb') as f:
                     totalSize = os.path.getsize(filename)
-                    print('Total file size : ' + str(round(totalSize / 1024 / 1024 ,1)) + ' Mb', flush=True)
-                    uploadTracker = FtpUploadTracker(int(totalSize))
+                    print('Total file size : ' + str(round(totalSize / 1024 / 1024, 1)) + ' Mb')
+                    uploadTracker = UploadTracker(int(totalSize))
 
                     # Get file size if exists
                     files_list = ftp.nlst()
-                    print(files_list, flush=True)
                     if os.path.basename(filename) in files_list:
-                        print("Resuming", flush=True)
+                        print("Resuming")
                         ftp.voidcmd('TYPE I')
                         rest_pos = ftp.size(os.path.basename(filename))
                         f.seek(rest_pos, 0)
                         print("seek to " + str(rest_pos))
-                        uploadTracker.sizeWritten = rest_pos
-                        print(ftp.storbinary('STOR ' + os.path.basename(filename), f, blocksize=1024, callback=uploadTracker.handle, rest=rest_pos), flush=True)
+                        uploadTracker.size_written = rest_pos
+                        print(ftp.storbinary('STOR ' + os.path.basename(filename), f, blocksize=1024, callback=uploadTracker.handle, rest=rest_pos))
                     else:
-                        print(ftp.storbinary('STOR ' + os.path.basename(filename), f, 1024, uploadTracker.handle), flush=True)
+                        print(ftp.storbinary('STOR ' + os.path.basename(filename), f, 1024, uploadTracker.handle))
                         done = True
 
         except (BrokenPipeError, ftplib.error_temp, socket.gaierror) as e:

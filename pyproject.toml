@@ -6,8 +6,8 @@ authors = ["Roman Novosad <roman.novosad@datasentics.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-kbc = {url = "https://bitbucket.org/kds_consulting_team/keboola-python-util-lib/get/0.5.2.zip#egg=kbc"}
 paramiko = "^2.7.2"
+"keboola.component" = "^1.0.3"
 
 [tool.poetry.dev-dependencies]
 unittest = "^0.0"

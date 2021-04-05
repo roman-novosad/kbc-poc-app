@@ -1,0 +1,84 @@
+{
+  "title": "Parameters",
+  "type": "object",
+  "required": [
+    "gzip",
+    "hostname",
+    "username",
+    "#password",
+    "protocol",
+    "remote_path",
+    "append_datetime",
+    "datetime_format",
+    "trust_unsecure_certificate"
+  ],
+  "properties": {
+    "hostname": {
+      "title": "Hostname",
+      "type": "string",
+      "minLength": 1,
+      "default": ""
+    },
+    "username": {
+      "title": "Username",
+      "type": "string",
+      "minLength": 1,
+      "default": ""
+    },
+    "#password": {
+      "title": "Password",
+      "type": "string",
+      "format": "password",
+      "minLength": 1,
+      "default": ""
+    },
+    "protocol": {
+      "title": "Protocol",
+      "type": "string",
+      "enum": [
+        "sftp",
+        "webdav"
+      ],
+      "default": "sftp"
+    },
+    "remote_path": {
+      "title": "Remote path",
+      "type": "string",
+      "minLength": 1,
+      "default": "/"
+    },
+    "append_datetime": {
+      "title": "Append datetime",
+      "type": "boolean",
+      "enum": [
+        false,
+        true
+      ],
+      "default": false
+    },
+    "gzip": {
+      "title": "Gzip Compression (sftp only)",
+      "type": "boolean",
+      "enum": [
+        false,
+        true
+      ],
+      "default": false
+    },
+    "datetime_format": {
+      "title": "Datetime format",
+      "type": "string",
+      "minLength": 1,
+      "default": "YYYY-MM-DD_HH:mm:ss"
+    },
+    "trust_unsecure_certificate": {
+      "title": "Trust unsecured certificate",
+      "type": "boolean",
+      "enum": [
+        false,
+        true
+      ],
+      "default": true
+    }
+  }
+}

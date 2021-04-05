@@ -1,7 +1,23 @@
 import csv
 
 from keboola import docker
-
+#
+# from kbc.env_handler import KBCEnvHandler
+#
+# DEFAULT_TABLE_INPUT = "/data/in/tables/"
+# DEFAULT_FILE_INPUT = "/data/in/files/"
+#
+# DEFAULT_FILE_DESTINATION = "/data/out/files/"
+# DEFAULT_TABLE_DESTINATION = "/data/out/tables/"
+#
+# # #### Keep for debug
+# KEY_DEBUG = 'debug'
+#
+# # list of mandatory parameters => if some is missing, component will fail with readable message on initialization.
+# MANDATORY_PARS = []
+# MANDATORY_IMAGE_PARS = []
+#
+# APP_VERSION = '0.0.1'
 
 def run(datadir):
     cfg = docker.Config(datadir)
