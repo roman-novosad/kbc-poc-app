@@ -1,11 +1,17 @@
-FROM python:3.6-alpine
-RUN apk add --no-cache git \
-	&& pip3 install --no-cache-dir --upgrade pytest flake8 \
-	&& pip3 install --no-cache-dir --upgrade --force-reinstall git+git://github.com/keboola/python-docker-application.git@2.0.1
-
-WORKDIR /code
+FROM python:3.7.2-slim
+ENV PYTHONIOENCODING utf-8
 
 COPY . /code/
 
-# Run the application
-CMD python3 -u ./src/main.py
+RUN pip install --upgrade pip
+
+# install gcc to be able to build packages - e.g. required by regex, dateparser, also required for pandas
+RUN apt-get update && apt-get install -y build-essential
+
+RUN pip install flake8
+RUN pip install -r /code/requirements.txt
+
+WORKDIR /code/
+
+
+CMD ["python", "-u", "/code/src/component.py"]

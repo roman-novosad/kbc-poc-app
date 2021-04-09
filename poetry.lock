@@ -1,4 +1,37 @@
 [[package]]
+name = "azure-core"
+version = "1.13.0"
+description = "Microsoft Azure Core Library for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+requests = ">=2.18.4"
+six = ">=1.11.0"
+
+[[package]]
+name = "azure-storage-blob"
+version = "12.8.0"
+description = "Microsoft Azure Blob Storage Client Library for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+azure-core = ">=1.10.0,<2.0.0"
+cryptography = ">=2.1.4"
+msrest = ">=0.6.18"
+
+[[package]]
+name = "backoff"
+version = "1.10.0"
+description = "Function decoration for backoff and retry"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
 name = "bcrypt"
 version = "3.2.0"
 description = "Modern password hashing for your software and your servers"
@@ -15,6 +48,14 @@ tests = ["pytest (>=3.2.1,!=3.3.0)"]
 typecheck = ["mypy"]
 
 [[package]]
+name = "certifi"
+version = "2020.12.5"
+description = "Python package for providing Mozilla's CA Bundle."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "cffi"
 version = "1.14.5"
 description = "Foreign Function Interface for Python calling C code."
@@ -24,6 +65,14 @@ python-versions = "*"
 
 [package.dependencies]
 pycparser = "*"
+
+[[package]]
+name = "chardet"
+version = "4.0.0"
+description = "Universal encoding detector for Python 2 and 3"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "cryptography"
@@ -45,6 +94,36 @@ ssh = ["bcrypt (>=3.1.5)"]
 test = ["pytest (>=6.0)", "pytest-cov", "pytest-subtests", "pytest-xdist", "pretend", "iso8601", "pytz", "hypothesis (>=1.11.4,!=3.79.2)"]
 
 [[package]]
+name = "freezegun"
+version = "1.1.0"
+description = "Let your Python tests travel through time"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+python-dateutil = ">=2.7"
+
+[[package]]
+name = "idna"
+version = "2.10"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "isodate"
+version = "0.6.0"
+description = "An ISO 8601 date/time/duration parser and formatter"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
 name = "keboola.component"
 version = "1.0.3"
 description = "General library for Python applications running in Keboola Connection environment"
@@ -55,6 +134,74 @@ python-versions = ">=3.7"
 [package.dependencies]
 pygelf = "*"
 pytz = "*"
+
+[[package]]
+name = "logging-gelf"
+version = "0.0.26"
+description = "Logging bundle to send logs using GELF"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+marshmallow = ">=3.0.0"
+
+[[package]]
+name = "marshmallow"
+version = "3.11.1"
+description = "A lightweight library for converting complex datatypes to and from native Python datatypes."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+dev = ["pytest", "pytz", "simplejson", "mypy (==0.812)", "flake8 (==3.9.0)", "flake8-bugbear (==21.3.2)", "pre-commit (>=2.4,<3.0)", "tox"]
+docs = ["sphinx (==3.4.3)", "sphinx-issues (==1.2.0)", "alabaster (==0.7.12)", "sphinx-version-warning (==1.1.2)", "autodocsumm (==0.2.2)"]
+lint = ["mypy (==0.812)", "flake8 (==3.9.0)", "flake8-bugbear (==21.3.2)", "pre-commit (>=2.4,<3.0)"]
+tests = ["pytest", "pytz", "simplejson"]
+
+[[package]]
+name = "mock"
+version = "4.0.3"
+description = "Rolling backport of unittest.mock for all Pythons"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+build = ["twine", "wheel", "blurb"]
+docs = ["sphinx"]
+test = ["pytest (<5.4)", "pytest-cov"]
+
+[[package]]
+name = "msrest"
+version = "0.6.21"
+description = "AutoRest swagger generator Python client runtime."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+isodate = ">=0.6.0"
+requests = ">=2.16,<3.0"
+requests-oauthlib = ">=0.5.0"
+
+[package.extras]
+async = ["aiohttp (>=3.0)", "aiodns"]
+
+[[package]]
+name = "oauthlib"
+version = "3.1.0"
+description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.extras]
+rsa = ["cryptography"]
+signals = ["blinker"]
+signedtoken = ["cryptography", "pyjwt (>=1.0.0)"]
 
 [[package]]
 name = "paramiko"
@@ -108,12 +255,56 @@ docs = ["sphinx (>=1.6.5)", "sphinx-rtd-theme"]
 tests = ["pytest (>=3.2.1,!=3.3.0)", "hypothesis (>=3.27.0)"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.1"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "pytz"
 version = "2021.1"
 description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "requests"
+version = "2.25.1"
+description = "Python HTTP for Humans."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+chardet = ">=3.0.2,<5"
+idna = ">=2.5,<3"
+urllib3 = ">=1.21.1,<1.27"
+
+[package.extras]
+security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
+socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
+
+[[package]]
+name = "requests-oauthlib"
+version = "1.3.0"
+description = "OAuthlib authentication support for Requests."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.dependencies]
+oauthlib = ">=3.0.0"
+requests = ">=2.0.0"
+
+[package.extras]
+rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
 [[package]]
 name = "six"
@@ -131,12 +322,37 @@ category = "dev"
 optional = false
 python-versions = "*"
 
+[[package]]
+name = "urllib3"
+version = "1.26.4"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
+
+[package.extras]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+brotli = ["brotlipy (>=0.6.0)"]
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "b65072950e9d05a8893f8407844a9eeb9771ba9a8d479dd00ac3c98e63b10551"
+content-hash = "4a7958ad16a92642448ae2b02c18b04c225068a65ab341a27553bc61cc86e842"
 
 [metadata.files]
+azure-core = [
+    {file = "azure-core-1.13.0.zip", hash = "sha256:624b46db407dbed9e03134ab65214efab5b5315949a1fbd6cd592c46fb272588"},
+    {file = "azure_core-1.13.0-py2.py3-none-any.whl", hash = "sha256:3c886a5c6e0698360826c08b2685965d8c23e1292c32be9028ce2fa691005849"},
+]
+azure-storage-blob = [
+    {file = "azure-storage-blob-12.8.0.zip", hash = "sha256:36b85a3423379d4a93f663022487cf53aa3043a355f8414321dde878c00cb577"},
+    {file = "azure_storage_blob-12.8.0-py2.py3-none-any.whl", hash = "sha256:46999df6e2cde8773739f7c3bd1eb5846d4b7dc1ef6e2161f3b6d1d0f21726ba"},
+]
+backoff = [
+    {file = "backoff-1.10.0-py2.py3-none-any.whl", hash = "sha256:5e73e2cbe780e1915a204799dba0a01896f45f4385e636bcca7a0614d879d0cd"},
+    {file = "backoff-1.10.0.tar.gz", hash = "sha256:b8fba021fac74055ac05eb7c7bfce4723aedde6cd0a504e5326bcb0bdd6d19a4"},
+]
 bcrypt = [
     {file = "bcrypt-3.2.0-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:c95d4cbebffafcdd28bd28bb4e25b31c50f6da605c81ffd9ad8a3d1b2ab7b1b6"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux1_x86_64.whl", hash = "sha256:63d4e3ff96188e5898779b6057878fecf3f11cfe6ec3b313ea09955d587ec7a7"},
@@ -145,6 +361,10 @@ bcrypt = [
     {file = "bcrypt-3.2.0-cp36-abi3-win32.whl", hash = "sha256:a67fb841b35c28a59cebed05fbd3e80eea26e6d75851f0574a9273c80f3e9b55"},
     {file = "bcrypt-3.2.0-cp36-abi3-win_amd64.whl", hash = "sha256:81fec756feff5b6818ea7ab031205e1d323d8943d237303baca2c5f9c7846f34"},
     {file = "bcrypt-3.2.0.tar.gz", hash = "sha256:5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29"},
+]
+certifi = [
+    {file = "certifi-2020.12.5-py2.py3-none-any.whl", hash = "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"},
+    {file = "certifi-2020.12.5.tar.gz", hash = "sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"},
 ]
 cffi = [
     {file = "cffi-1.14.5-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:bb89f306e5da99f4d922728ddcd6f7fcebb3241fc40edebcb7284d7514741991"},
@@ -185,6 +405,10 @@ cffi = [
     {file = "cffi-1.14.5-cp39-cp39-win_amd64.whl", hash = "sha256:f2d45f97ab6bb54753eab54fffe75aaf3de4ff2341c9daee1987ee1837636f1d"},
     {file = "cffi-1.14.5.tar.gz", hash = "sha256:fd78e5fee591709f32ef6edb9a015b4aa1a5022598e36227500c8f4e02328d9c"},
 ]
+chardet = [
+    {file = "chardet-4.0.0-py2.py3-none-any.whl", hash = "sha256:f864054d66fd9118f2e67044ac8981a54775ec5b67aed0441892edb553d21da5"},
+    {file = "chardet-4.0.0.tar.gz", hash = "sha256:0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"},
+]
 cryptography = [
     {file = "cryptography-3.4.7-cp36-abi3-macosx_10_10_x86_64.whl", hash = "sha256:3d8427734c781ea5f1b41d6589c293089704d4759e34597dce91014ac125aad1"},
     {file = "cryptography-3.4.7-cp36-abi3-macosx_11_0_arm64.whl", hash = "sha256:8e56e16617872b0957d1c9742a3f94b43533447fd78321514abbe7db216aa250"},
@@ -199,9 +423,40 @@ cryptography = [
     {file = "cryptography-3.4.7-pp37-pypy37_pp73-manylinux2014_x86_64.whl", hash = "sha256:ee77aa129f481be46f8d92a1a7db57269a2f23052d5f2433b4621bb457081cc9"},
     {file = "cryptography-3.4.7.tar.gz", hash = "sha256:3d10de8116d25649631977cb37da6cbdd2d6fa0e0281d014a5b7d337255ca713"},
 ]
+freezegun = [
+    {file = "freezegun-1.1.0-py2.py3-none-any.whl", hash = "sha256:2ae695f7eb96c62529f03a038461afe3c692db3465e215355e1bb4b0ab408712"},
+    {file = "freezegun-1.1.0.tar.gz", hash = "sha256:177f9dd59861d871e27a484c3332f35a6e3f5d14626f2bf91be37891f18927f3"},
+]
+idna = [
+    {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
+    {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
+]
+isodate = [
+    {file = "isodate-0.6.0-py2.py3-none-any.whl", hash = "sha256:aa4d33c06640f5352aca96e4b81afd8ab3b47337cc12089822d6f322ac772c81"},
+    {file = "isodate-0.6.0.tar.gz", hash = "sha256:2e364a3d5759479cdb2d37cce6b9376ea504db2ff90252a2e5b7cc89cc9ff2d8"},
+]
 "keboola.component" = [
     {file = "keboola.component-1.0.3-py3-none-any.whl", hash = "sha256:6adaa291188d9652abad24b95428565602f9c62384f34787c6bfc0400fd13c44"},
     {file = "keboola.component-1.0.3.tar.gz", hash = "sha256:d65142ee5320bcfadb5dc1f741bce32afe245d2a2659ad3c615f5384343091a7"},
+]
+logging-gelf = [
+    {file = "logging-gelf-0.0.26.tar.gz", hash = "sha256:1aed36eb7ea2e12d7568e227fb9040ca2ae02fca3c24ee90e67419755d76a021"},
+]
+marshmallow = [
+    {file = "marshmallow-3.11.1-py2.py3-none-any.whl", hash = "sha256:0dd42891a5ef288217ed6410917f3c6048f585f8692075a0052c24f9bfff9dfd"},
+    {file = "marshmallow-3.11.1.tar.gz", hash = "sha256:16e99cb7f630c0ef4d7d364ed0109ac194268dde123966076ab3dafb9ae3906b"},
+]
+mock = [
+    {file = "mock-4.0.3-py3-none-any.whl", hash = "sha256:122fcb64ee37cfad5b3f48d7a7d51875d7031aaf3d8be7c42e2bee25044eee62"},
+    {file = "mock-4.0.3.tar.gz", hash = "sha256:7d3fbbde18228f4ff2f1f119a45cdffa458b4c0dee32eb4d2bb2f82554bac7bc"},
+]
+msrest = [
+    {file = "msrest-0.6.21-py2.py3-none-any.whl", hash = "sha256:c840511c845330e96886011a236440fafc2c9aff7b2df9c0a92041ee2dee3782"},
+    {file = "msrest-0.6.21.tar.gz", hash = "sha256:72661bc7bedc2dc2040e8f170b6e9ef226ee6d3892e01affd4d26b06474d68d8"},
+]
+oauthlib = [
+    {file = "oauthlib-3.1.0-py2.py3-none-any.whl", hash = "sha256:df884cd6cbe20e32633f1db1072e9356f53638e4361bef4e8b03c9127c9328ea"},
+    {file = "oauthlib-3.1.0.tar.gz", hash = "sha256:bee41cc35fcca6e988463cacc3bcb8a96224f470ca547e697b604cc697b2f889"},
 ]
 paramiko = [
     {file = "paramiko-2.7.2-py2.py3-none-any.whl", hash = "sha256:4f3e316fef2ac628b05097a637af35685183111d4bc1b5979bd397c2ab7b5898"},
@@ -235,9 +490,22 @@ pynacl = [
     {file = "PyNaCl-1.4.0-cp38-cp38-win_amd64.whl", hash = "sha256:7c6092102219f59ff29788860ccb021e80fffd953920c4a8653889c029b2d420"},
     {file = "PyNaCl-1.4.0.tar.gz", hash = "sha256:54e9a2c849c742006516ad56a88f5c74bf2ce92c9f67435187c3c5953b346505"},
 ]
+python-dateutil = [
+    {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
+    {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
+]
 pytz = [
     {file = "pytz-2021.1-py2.py3-none-any.whl", hash = "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"},
     {file = "pytz-2021.1.tar.gz", hash = "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da"},
+]
+requests = [
+    {file = "requests-2.25.1-py2.py3-none-any.whl", hash = "sha256:c210084e36a42ae6b9219e00e48287def368a26d03a048ddad7bfee44f75871e"},
+    {file = "requests-2.25.1.tar.gz", hash = "sha256:27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"},
+]
+requests-oauthlib = [
+    {file = "requests-oauthlib-1.3.0.tar.gz", hash = "sha256:b4261601a71fd721a8bd6d7aa1cc1d6a8a93b4a9f5e96626f8e4d91e8beeaa6a"},
+    {file = "requests_oauthlib-1.3.0-py2.py3-none-any.whl", hash = "sha256:7f71572defaecd16372f9006f33c2ec8c077c3cfa6f5911a9a90202beb513f3d"},
+    {file = "requests_oauthlib-1.3.0-py3.7.egg", hash = "sha256:fa6c47b933f01060936d87ae9327fead68768b69c6c9ea2109c48be30f2d4dbc"},
 ]
 six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
@@ -245,4 +513,8 @@ six = [
 ]
 unittest = [
     {file = "unittest2-0.0.0.tar.gz", hash = "sha256:1b492484bea7f68abda5fcc61412e77b6a105e5842355d630f8b75f01add3555"},
+]
+urllib3 = [
+    {file = "urllib3-1.26.4-py2.py3-none-any.whl", hash = "sha256:2f4da4594db7e1e110a944bb1b551fdf4e6c136ad42e4234131391e21eb5b0df"},
+    {file = "urllib3-1.26.4.tar.gz", hash = "sha256:e7b021f7241115872f92f43c6508082facffbd1c048e3c6e2bb9c2a157e28937"},
 ]

@@ -1,0 +1,9 @@
+https://bitbucket.org/kds_consulting_team/keboola-python-util-lib/get/0.2.9.zip#egg=kbc
+logging_gelf
+mock
+freezegun
+pandas
+azure-storage-blob
+paramiko>=2.7.2
+backoff
+keboola.component
